@@ -13,6 +13,7 @@ import { selectQuestions } from "../features/adminSlice";
 import Card from "../components/Card";
 // @ts-ignore
 import mainImage from "../assets/mainImage.jpg";
+import { fetchQuestions } from "../features/gameThunk";
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -24,12 +25,16 @@ const Main: React.FC = () => {
   const [isWordGuessed, setIsWordGuessed] = useState(false);
 
   useEffect(() => {
-    const randomQuestion =
-      questions[Math.floor(Math.random() * questions.length)];
-    dispatch(setQuestion(randomQuestion));
+    dispatch(fetchQuestions());
+  }, [dispatch]);
 
-    console.log(questions);
-  }, [dispatch, questions]);
+  useEffect(() => {
+    if (questions.length > 0) {
+      const randomQuestion =
+        questions[Math.floor(Math.random() * questions.length)];
+      dispatch(setQuestion(randomQuestion));
+    }
+  }, [questions, dispatch]);
 
   const letterCheck = (input: string) => {
     const letter = input.toLowerCase();
@@ -40,13 +45,7 @@ const Main: React.FC = () => {
       guessedLetters.includes(letter.toLowerCase()),
     );
     if (isWordGuessed) {
-      setIsWordGuessed(true);
-      setTimeout(() => {
-        setIsWordGuessed(false);
-        dispatch(
-          setQuestion(questions[Math.floor(Math.random() * questions.length)]),
-        );
-      }, 5000);
+      handleWordGuessed();
     }
   };
 
@@ -54,19 +53,21 @@ const Main: React.FC = () => {
     if (word.trim()) {
       const guessedWord = word.trim().toLowerCase();
       if (guessedWord === answer.join("").toLowerCase()) {
-        setIsWordGuessed(true);
-        setTimeout(() => {
-          setIsWordGuessed(false);
-          dispatch(
-            setQuestion(
-              questions[Math.floor(Math.random() * questions.length)],
-            ),
-          );
-        }, 5000);
+        handleWordGuessed();
       }
       dispatch(guessWord(guessedWord));
       setWord("");
     }
+  };
+
+  const handleWordGuessed = () => {
+    setIsWordGuessed(true);
+    setTimeout(() => {
+      setIsWordGuessed(false);
+      const randomQuestion =
+        questions[Math.floor(Math.random() * questions.length)];
+      dispatch(setQuestion(randomQuestion));
+    }, 5000);
   };
 
   return (

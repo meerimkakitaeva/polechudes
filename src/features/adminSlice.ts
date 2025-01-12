@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IAdmin, IQuestion } from "../types";
-import { adminLogin, questions } from "../constants";
+import { adminLogin } from "../constants";
 import { RootState } from "../store";
+import { fetchQuestions } from "./gameThunk";
 
 interface AdminState {
   questions: IQuestion[];
   login: IAdmin;
   isLoggedIn: boolean;
+  fetchLoading: boolean;
 }
 
 const initialState: AdminState = {
-  questions: questions,
+  questions: [],
   login: adminLogin,
   isLoggedIn: localStorage.getItem("isLoggedIn") === "true",
+  fetchLoading: false,
 };
 
 const adminSlice = createSlice({
@@ -36,6 +39,18 @@ const adminSlice = createSlice({
       state.isLoggedIn = false;
       localStorage.removeItem("isLoggedIn");
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchQuestions.pending, (state) => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(fetchQuestions.fulfilled, (state, action) => {
+      state.questions = action.payload;
+      state.fetchLoading = false;
+    });
+    builder.addCase(fetchQuestions.rejected, (state) => {
+      state.fetchLoading = true;
+    });
   },
 });
 
