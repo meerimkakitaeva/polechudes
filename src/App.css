@@ -2,3 +2,19 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.loginBtn {
+    max-width: 100px;
+}
+
+.formAdmin {
+    max-width: 400px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .main-image {
+        width: 60%;
+    }
+}

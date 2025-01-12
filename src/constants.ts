@@ -1,4 +1,4 @@
-import { IQuestion } from "./types";
+import { IAdmin, IQuestion } from "./types";
 
 export const questions: IQuestion[] = [
   {
@@ -23,3 +23,8 @@ export const questions: IQuestion[] = [
     answer: "Пустоварица",
   },
 ];
+
+export const adminLogin: IAdmin = {
+  username: "admin",
+  password: "123",
+};

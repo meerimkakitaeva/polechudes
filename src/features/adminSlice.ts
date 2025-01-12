@@ -1,21 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IQuestion } from "../types";
-import { questions } from "../constants";
+import { IAdmin, IQuestion } from "../types";
+import { adminLogin, questions } from "../constants";
 import { RootState } from "../store";
 
 interface AdminState {
   questions: IQuestion[];
+  login: IAdmin;
+  isLoggedIn: boolean;
 }
 
 const initialState: AdminState = {
   questions: questions,
+  login: adminLogin,
+  isLoggedIn: localStorage.getItem("isLoggedIn") === "true",
 };
 
 const adminSlice = createSlice({
   name: "admin",
   initialState,
-  reducers: {},
+  reducers: {
+    loginCheck(state, action) {
+      const { username, password } = action.payload;
+
+      if (state.login.username === username && state.login.password === password) {
+        state.isLoggedIn = true;
+        localStorage.setItem("isLoggedIn", "true");
+      } else {
+        state.isLoggedIn = false;
+      }
+    },
+  },
 });
 
 export default adminSlice.reducer;
 export const selectQuestions = (state: RootState) => state.admin.questions;
+export const selectIsLoggedIn = (state: RootState) => state.admin.isLoggedIn;
+export const { loginCheck } = adminSlice.actions;

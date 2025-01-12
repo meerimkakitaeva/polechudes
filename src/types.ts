@@ -3,3 +3,9 @@ export interface IQuestion {
   question: string;
   answer: string;
 }
+
+export interface IAdmin {
+  username: string;
+  password: string;
+}
+
