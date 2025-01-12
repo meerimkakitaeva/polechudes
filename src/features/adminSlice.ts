@@ -22,12 +22,19 @@ const adminSlice = createSlice({
     loginCheck(state, action) {
       const { username, password } = action.payload;
 
-      if (state.login.username === username && state.login.password === password) {
+      if (
+        state.login.username === username &&
+        state.login.password === password
+      ) {
         state.isLoggedIn = true;
         localStorage.setItem("isLoggedIn", "true");
       } else {
         state.isLoggedIn = false;
       }
+    },
+    logout(state) {
+      state.isLoggedIn = false;
+      localStorage.removeItem("isLoggedIn");
     },
   },
 });
@@ -35,4 +42,4 @@ const adminSlice = createSlice({
 export default adminSlice.reducer;
 export const selectQuestions = (state: RootState) => state.admin.questions;
 export const selectIsLoggedIn = (state: RootState) => state.admin.isLoggedIn;
-export const { loginCheck } = adminSlice.actions;
+export const { loginCheck, logout } = adminSlice.actions;

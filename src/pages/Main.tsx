@@ -28,7 +28,7 @@ const Main: React.FC = () => {
       questions[Math.floor(Math.random() * questions.length)];
     dispatch(setQuestion(randomQuestion));
 
-    console.log(questions)
+    console.log(questions);
   }, [dispatch, questions]);
 
   const letterCheck = (input: string) => {

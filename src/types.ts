@@ -1,5 +1,5 @@
 export interface IQuestion {
-  id: number;
+  id: string;
   question: string;
   answer: string;
 }
@@ -8,4 +8,3 @@ export interface IAdmin {
   username: string;
   password: string;
 }
-

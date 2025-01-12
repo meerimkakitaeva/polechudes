@@ -13,14 +13,14 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/auth" element={<Login />} />
-          <Route
-              path="/admin"
-              element={
-                  <ProtectedRoute>
-                      <Admin />
-                  </ProtectedRoute>
-              }
-          />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
