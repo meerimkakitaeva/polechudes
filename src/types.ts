@@ -8,3 +8,12 @@ export interface IAdmin {
   username: string;
   password: string;
 }
+
+export interface IQMutation {
+  question: string;
+  answer: string;
+}
+
+export interface IQList {
+  [id: string]: IQMutation;
+}
