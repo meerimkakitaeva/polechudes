@@ -58,3 +58,5 @@ export default adminSlice.reducer;
 export const selectQuestions = (state: RootState) => state.admin.questions;
 export const selectIsLoggedIn = (state: RootState) => state.admin.isLoggedIn;
 export const { loginCheck, logout } = adminSlice.actions;
+export const selectFetchLoading = (state: RootState) =>
+  state.admin.fetchLoading;
