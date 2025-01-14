@@ -30,6 +30,21 @@ form {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.admin-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #a8d0e6;
+}
+
+.header {
+    background: #24305e;
+}
+
+.content {
+    flex-grow: 1;
+}
+
 @media (max-width: 768px) {
     .main-image {
         width: 60%;

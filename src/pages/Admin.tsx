@@ -29,15 +29,14 @@ const Admin = () => {
   }, [dispatch]);
 
   return (
-    <div style={{ background: "#A8D0E6", height: "100vh" }}>
-      <div className="text-white" style={{ background: "#24305E" }}>
+    <div className="admin-page">
+      <div className="header text-white">
         <div className="container pt-3 pb-3 d-flex justify-content-between">
           <h4 className="m-0">Админ панель</h4>
           <div className="d-flex justify-content-end">
             <Link
-              className="btn text-primary-emphasis me-2"
+              className="btn bg-primary-subtle text-primary-emphasis me-2"
               to="/admin/create-question"
-              style={{ background: "#F8E9A1" }}
             >
               Создать вопрос
             </Link>
@@ -51,7 +50,7 @@ const Admin = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-3">
+      <div className="container mt-3 content">
         {loading ? (
           <Spinner />
         ) : (
