@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../app/hook";
 import { selectCreateLoading } from "../features/adminSlice";
 import { IQMutation } from "../types";
 import { createQuestion } from "../features/gameThunk";
-import CreateQuestionForm from "../components/CreateQuestionForm/CreateQuestionForm";
+import QuestionForm from "../components/QuestionForm/QuestionForm";
 
 const CreateQuestion = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ const CreateQuestion = () => {
 
   return (
     <div className="mt-4">
-      <CreateQuestionForm onSubmit={onSubmit} isLoading={loading} />
+      <QuestionForm onSubmit={onSubmit} isLoading={loading} />
     </div>
   );
 };

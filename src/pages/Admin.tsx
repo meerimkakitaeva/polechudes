@@ -33,7 +33,7 @@ const Admin = () => {
       <h4>Админ панель</h4>
       <div className="d-flex justify-content-between mt-4">
         <Link className="btn btn-primary" to="/admin/create-question">
-          Создать новый вопрос
+          Создать вопрос
         </Link>
         <button onClick={handleLogout} className="btn btn-danger">
           Выйти

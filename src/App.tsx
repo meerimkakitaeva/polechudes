@@ -7,6 +7,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import CreateQuestion from "./pages/CreateQuestion";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import EditQuestion from "./pages/EditQuestion";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Main />} />
         <Route path="/auth" element={<Login />} />
         <Route path="/admin/create-question" element={<CreateQuestion />} />
+        <Route path="/admin/edit-question/:id" element={<EditQuestion />} />
         <Route
           path="/admin"
           element={

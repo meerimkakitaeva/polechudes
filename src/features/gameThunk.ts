@@ -35,3 +35,29 @@ export const createQuestion = createAsyncThunk<void, IQMutation>(
     await axiosApi.post("/questions.json", question);
   },
 );
+
+export const fetchOneQuestion = createAsyncThunk<IQuestion, string>(
+  "admin/fetchOneQ",
+  async (id) => {
+    const res = await axiosApi.get<IQuestion | null>(
+      "/questions/" + id + ".json",
+    );
+    const question = res.data;
+    if (question === null) {
+      throw new Error("Not found!");
+    }
+    return question;
+  },
+);
+
+interface editParams {
+  id: string;
+  question: IQMutation;
+}
+
+export const editQuestion = createAsyncThunk<void, editParams>(
+  "admin/editQ",
+  async (params) => {
+    await axiosApi.put(`/questions/${params.id}.json`, params.question);
+  },
+);

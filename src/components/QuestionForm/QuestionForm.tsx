@@ -4,6 +4,8 @@ import ButtonSpinner from "../Spinner/ButtonSpinner";
 
 interface Props {
   onSubmit: (newQ: IQMutation) => void;
+  existingQ?: IQMutation;
+  isEdit?: boolean;
   isLoading?: boolean;
 }
 
@@ -12,8 +14,13 @@ const initialState = {
   answer: "",
 };
 
-const CreateQuestionForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
-  const [newQ, setNewQ] = useState<IQMutation>(initialState);
+const QuestionForm: React.FC<Props> = ({
+  onSubmit,
+  isLoading,
+  isEdit,
+  existingQ = initialState,
+}) => {
+  const [newQ, setNewQ] = useState<IQMutation>(existingQ);
 
   const inputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -63,18 +70,17 @@ const CreateQuestionForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
             required
           />
         </div>
-
         <button
           type="submit"
-          className="btn btn-primary mt-3"
+          className="btn btn-success mt-3"
           disabled={isLoading}
         >
           {isLoading && <ButtonSpinner />}
-          Создать
+          {isEdit ? "Сохранить" : "Создать"}
         </button>
       </form>
     </>
   );
 };
 
-export default CreateQuestionForm;
+export default QuestionForm;

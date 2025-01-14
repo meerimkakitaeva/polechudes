@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { selectDeleteLoading } from "../../features/adminSlice";
 import { deleteQuestion, fetchQuestions } from "../../features/gameThunk";
 import ButtonSpinner from "../Spinner/ButtonSpinner";
+import { Link } from "react-router-dom";
 
 interface Props {
   item: IQuestion;
@@ -26,9 +27,12 @@ const QuestionItem: React.FC<Props> = ({ item }) => {
         <div className="card-body">
           <h5 className="card-title">Вопрос: {item.question}</h5>
           <p className="card-text">Ответ: {item.answer}</p>
-          <a href="#" className="btn btn-outline-success me-3">
+          <Link
+            className="btn btn-outline-success"
+            to={"/admin/edit-question/" + item.id}
+          >
             Изменить
-          </a>
+          </Link>
           <button
             className="btn btn-outline-danger ms-2"
             onClick={onDelete}
