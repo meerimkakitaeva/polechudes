@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IQList, IQuestion } from "../types";
+import { IQList, IQMutation, IQuestion } from "../types";
 import axiosApi from "../axiosApi";
 
 export const fetchQuestions = createAsyncThunk<IQuestion[]>(
@@ -26,5 +26,12 @@ export const deleteQuestion = createAsyncThunk<void, string>(
   "admin/deleteQuestion",
   async (id) => {
     await axiosApi.delete(`/questions/${id}.json`);
+  },
+);
+
+export const createQuestion = createAsyncThunk<void, IQMutation>(
+  "admin/createQuestion",
+  async (question) => {
+    await axiosApi.post("/questions.json", question);
   },
 );

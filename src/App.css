@@ -13,6 +13,12 @@ body {
     margin: 0 auto;
 }
 
+.formQ {
+    max-width: 800px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
 @media (max-width: 768px) {
     .main-image {
         width: 60%;

@@ -26,7 +26,7 @@ const QuestionItem: React.FC<Props> = ({ item }) => {
         <div className="card-body">
           <h5 className="card-title">Вопрос: {item.question}</h5>
           <p className="card-text">Ответ: {item.answer}</p>
-          <a href="#" className="btn btn-success me-3">
+          <a href="#" className="btn btn-outline-success me-3">
             Изменить
           </a>
           <button
