@@ -29,21 +29,19 @@ const EditCategory = () => {
   }, [dispatch]);
 
   return (
-    <div className="mt-3">
-      <div>
-        {oneLoading ? (
-          <Spinner />
-        ) : (
-          question && (
-            <QuestionForm
-              onSubmit={onSubmit}
-              existingQ={question}
-              isLoading={editLoading}
-              isEdit={true}
-            />
-          )
-        )}
-      </div>
+    <div>
+      {oneLoading ? (
+        <Spinner />
+      ) : (
+        question && (
+          <QuestionForm
+            onSubmit={onSubmit}
+            existingQ={question}
+            isLoading={editLoading}
+            isEdit={true}
+          />
+        )
+      )}
     </div>
   );
 };

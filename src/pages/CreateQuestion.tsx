@@ -16,11 +16,7 @@ const CreateQuestion = () => {
     navigate("/admin");
   };
 
-  return (
-    <div className="mt-4">
-      <QuestionForm onSubmit={onSubmit} isLoading={loading} />
-    </div>
-  );
+  return <QuestionForm onSubmit={onSubmit} isLoading={loading} />;
 };
 
 export default CreateQuestion;

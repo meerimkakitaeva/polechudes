@@ -42,11 +42,14 @@ const QuestionForm: React.FC<Props> = ({
   };
 
   return (
-    <>
-      <form onSubmit={onFormSubmit} className="formQ">
+    <div style={{ background: "#A8D0E6", height: "100vh" }}>
+      <div className="text-white pt-3 pb-3" style={{ background: "#24305E" }}>
+        <h4 className="formQ">{isEdit ? "Редактирование" : "Создание"}</h4>
+      </div>
+      <form onSubmit={onFormSubmit} className="formQ mt-3">
         <div className="form-group">
           <div className="form-group mb-3">
-            <label htmlFor="name">Создайте вопрос:</label>
+            <label htmlFor="name">Вопрос:</label>
             <textarea
               name="question"
               id="question"
@@ -59,7 +62,7 @@ const QuestionForm: React.FC<Props> = ({
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="name">Создайте ответ:</label>
+          <label htmlFor="name">Ответ:</label>
           <input
             type="text"
             name="answer"
@@ -79,7 +82,7 @@ const QuestionForm: React.FC<Props> = ({
           {isEdit ? "Сохранить" : "Создать"}
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

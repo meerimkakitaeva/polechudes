@@ -8,6 +8,7 @@ import CreateQuestion from "./pages/CreateQuestion";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EditQuestion from "./pages/EditQuestion";
+import NotFound from "./pages/NotFound";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/auth" element={<Login />} />
         <Route path="/admin/create-question" element={<CreateQuestion />} />
         <Route path="/admin/edit-question/:id" element={<EditQuestion />} />
+        <Route path="*" element={<NotFound />} />
         <Route
           path="/admin"
           element={
