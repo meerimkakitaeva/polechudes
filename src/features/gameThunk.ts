@@ -3,7 +3,7 @@ import { IQList, IQuestion } from "../types";
 import axiosApi from "../axiosApi";
 
 export const fetchQuestions = createAsyncThunk<IQuestion[]>(
-  "tracker/fetchCategories",
+  "admin/fetchQuestions",
   async () => {
     const res = await axiosApi.get<IQList | null>("/questions.json");
     const qList = res.data;
@@ -19,5 +19,12 @@ export const fetchQuestions = createAsyncThunk<IQuestion[]>(
       });
     }
     return newQ;
+  },
+);
+
+export const deleteQuestion = createAsyncThunk<void, string>(
+  "admin/deleteQuestion",
+  async (id) => {
+    await axiosApi.delete(`/questions/${id}.json`);
   },
 );

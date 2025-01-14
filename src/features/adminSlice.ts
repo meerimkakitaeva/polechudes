@@ -2,13 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IAdmin, IQuestion } from "../types";
 import { adminLogin } from "../constants";
 import { RootState } from "../store";
-import { fetchQuestions } from "./gameThunk";
+import { deleteQuestion, fetchQuestions } from "./gameThunk";
 
 interface AdminState {
   questions: IQuestion[];
   login: IAdmin;
   isLoggedIn: boolean;
   fetchLoading: boolean;
+  deleteLoading: boolean | string;
 }
 
 const initialState: AdminState = {
@@ -16,6 +17,7 @@ const initialState: AdminState = {
   login: adminLogin,
   isLoggedIn: localStorage.getItem("isLoggedIn") === "true",
   fetchLoading: false,
+  deleteLoading: false,
 };
 
 const adminSlice = createSlice({
@@ -51,6 +53,16 @@ const adminSlice = createSlice({
     builder.addCase(fetchQuestions.rejected, (state) => {
       state.fetchLoading = true;
     });
+
+    builder.addCase(deleteQuestion.pending, (state, action) => {
+      state.deleteLoading = action.meta.arg;
+    });
+    builder.addCase(deleteQuestion.fulfilled, (state) => {
+      state.deleteLoading = false;
+    });
+    builder.addCase(deleteQuestion.rejected, (state) => {
+      state.deleteLoading = true;
+    });
   },
 });
 
@@ -60,3 +72,5 @@ export const selectIsLoggedIn = (state: RootState) => state.admin.isLoggedIn;
 export const { loginCheck, logout } = adminSlice.actions;
 export const selectFetchLoading = (state: RootState) =>
   state.admin.fetchLoading;
+export const selectDeleteLoading = (state: RootState) =>
+  state.admin.deleteLoading;
