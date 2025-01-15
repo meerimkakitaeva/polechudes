@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/polechudes/static/css/main.efb1191a.css",
-    "main.js": "/polechudes/static/js/main.effc2551.js",
+    "main.js": "/polechudes/static/js/main.dfbb5d94.js",
     "static/media/mainImage.jpg": "/polechudes/static/media/mainImage.c2b0e32869d4259ef7da.jpg",
     "index.html": "/polechudes/index.html",
     "main.efb1191a.css.map": "/polechudes/static/css/main.efb1191a.css.map",
-    "main.effc2551.js.map": "/polechudes/static/js/main.effc2551.js.map"
+    "main.dfbb5d94.js.map": "/polechudes/static/js/main.dfbb5d94.js.map"
   },
   "entrypoints": [
     "static/css/main.efb1191a.css",
-    "static/js/main.effc2551.js"
+    "static/js/main.dfbb5d94.js"
   ]
 }
