@@ -14,7 +14,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/polechudes/f" element={<Main />} />
         <Route path="/auth" element={<Login />} />
         <Route path="/admin/create-question" element={<CreateQuestion />} />
         <Route path="/admin/edit-question/:id" element={<EditQuestion />} />
